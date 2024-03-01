@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import ChildComponent from './components/ChildComponent';
+import SiblingComponent from './components/SiblingComponent';
 
-function App() {
+const ParentComponent = () => {
+
+  let [count, setCount] = useState(0);
+
+  const uppCount = () => setCount(count + 1);
+  const lowCount = () => setCount(count > 0 ? count - 1 : 0);
+  const reset = () => setCount(count = 0);
+  const randomNum = () => setCount(count = Math.floor(Math.random() * 10) + 1);
+
+  const name = 'Pavel';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='wrapper'>
+    
+      <p>Счёт: {count}</p>
+      <button onClick={uppCount}>Увеличить</button>
+      <button onClick={reset}>Сбросить</button>
+      <button onClick={randomNum}>Случайное число</button>
+      <button onClick={lowCount}>Уменьшить</button>
+      
+      <ChildComponent
+        name={name}
+        count={count}
+      />
+      
+      <SiblingComponent/>
+
     </div>
+    
+
   );
 }
 
-export default App;
+export default ParentComponent;
