@@ -8,7 +8,7 @@ const ParentComponent = () => {
 
   const uppCount = () => setCount(count + 1);
   const lowCount = () => setCount(count > 0 ? count - 1 : 0);
-  const reset = () => setCount(count = 0);
+  const reset = () => setCount(0);
   const randomNum = () => setCount(count = Math.floor(Math.random() * 10) + 1);
 
   const name = 'Pavel';
